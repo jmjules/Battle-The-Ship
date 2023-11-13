@@ -42,7 +42,7 @@ function placeShips(board) {
     placeShip(freeCells, SUBMARINE_LENGTH)
     placeShip(freeCells, SUBMARINE_LENGTH)
 
-    console.log(freeCells);
+    // console.log(freeCells);
 
 
     for (let m = 0; m < GRID_WIDTH; m++) {
@@ -76,7 +76,7 @@ function placeShip(arr, shipSize) {
         }
     }
 
-    console.log(direction, x, y);
+    // console.log(direction, x, y);
     for (let i = 0; i < shipSize; i++) {
         arr[y + (i * direction)][x+(i * (1 - direction))] = "X"
         
@@ -85,6 +85,21 @@ function placeShip(arr, shipSize) {
 }
 
 
+
+export function compTurn() {
+    let x = getRandomInt(GRID_WIDTH)
+    let y = getRandomInt(GRID_WIDTH)
+
+    return [x, y]
+}
+
+export function attackPlayerCell(x, y) {
+    let chosenCell = x * 10 + y + 1
+    let cell = document.querySelector("#player" + chosenCell) 
+
+    cell.classList.add("mehit")
+    console.log(cell);
+}
 
 
 

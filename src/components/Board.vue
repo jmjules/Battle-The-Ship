@@ -2,7 +2,7 @@
     <div class="board-wrapper">
         <h2>{{ who }}</h2>
         <div class="board">
-            <Cell v-for="index in 100" :key="index" :cell-id="index" :parentBoard="who" @cellClicked="processClick" />
+            <Cell v-for="index in 100" :key="index" :cell-id="index" :id="who + index" :parentBoard="who" @cellClicked="processClick" />
         </div>
     </div>
 
@@ -11,13 +11,18 @@
 <script setup>
 import Cell from "@/components/Cell.vue"
 
-defineProps({
+const props = defineProps({
     who: String
 })
 
 const emit = defineEmits(["turn"])
 
 function processClick( cell ) {
+    // if( props.who === "computer") {
+    //     console.log("im a computer");
+    //     emit("turn", cell)
+    //     console.log("after");
+    // }
     emit("turn", cell)
 }
 
